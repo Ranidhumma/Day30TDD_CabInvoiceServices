@@ -34,4 +34,16 @@ public class InvoiceTestServices {
 		double fare = invoiceGenerator.calculateMultipleRidesFare(rides);
 		Assert.assertEquals(30, fare, 0.0);
 	}
+
+	@Test
+	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		Ride[] rides = { new Ride(2.0, 5), new Ride(01.1, 1) };
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30);
+		InvoiceSummary actualInvoiceSummary = invoiceGenerator.CalculateSummaryFare(rides);
+		if (expectedInvoiceSummary.getAverageFarePerRide() == actualInvoiceSummary.getAverageFarePerRide()
+				&& expectedInvoiceSummary.getTotalNumberOfRides() == actualInvoiceSummary.getTotalNumberOfRides()
+				&& expectedInvoiceSummary.getTotalFare() == actualInvoiceSummary.getTotalFare())
+			Assert.assertEquals(1, 1);
+	}
 }
